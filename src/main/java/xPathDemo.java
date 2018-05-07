@@ -14,7 +14,7 @@ public class xPathDemo {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File("E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\usage.statistics.xml"));
+        Document document = builder.parse(new File("E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\biblStruct.xml"));
 
         XPathFactory xpf = XPathFactory.newInstance();
         XPath xpath = xpf.newXPath();
@@ -30,11 +30,12 @@ public class xPathDemo {
 //        preceding-sibling:://book[1]/price
 //        generate-id(//book)
 
-//        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\pusage.statistics.xml
+//        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\ usage.statistics.xml
 //        count(/application/component[@name='ActionsCollector']/counts/child::*)
+//        //component[@name='ActionsCollector']/counts/entry[1]/@action
 
 
-        System.out.println(xpath.evaluate("//component[@name='ActionsCollector']/counts/entry[1]/@action", document));
+        System.out.println(xpath.evaluate("//surname/ancestor::biblStruct/@type", document));
 
 
 //        System.out.println(xpath.evaluate("", document, XPathConstants.NODESET));
