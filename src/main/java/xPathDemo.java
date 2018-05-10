@@ -34,8 +34,11 @@ public class xPathDemo {
 //        count(/application/component[@name='ActionsCollector']/counts/child::*)
 //        //component[@name='ActionsCollector']/counts/entry[1]/@action
 
+//        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\biblStruct.xml
+//        //surname/ancestor::biblStruct/@type
 
-        System.out.println(xpath.evaluate("//surname/ancestor::biblStruct/@type", document));
+
+        System.out.println(xpath.evaluate("", document));
 
 
 //        System.out.println(xpath.evaluate("", document, XPathConstants.NODESET));
