@@ -14,7 +14,7 @@ public class xPathDemo {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File("E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\usage.statistics.xml"));
+        Document document = builder.parse(new File("E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\books.xml"));
 
         XPathFactory xpf = XPathFactory.newInstance();
         XPath xpath = xpf.newXPath();
@@ -29,6 +29,7 @@ public class xPathDemo {
 //        descendant::book
 //        preceding-sibling:://book[1]/price
 //        generate-id(//book)
+//        //book[last()]/author/following-sibling::*[name() = 'genre']
 
 //        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\ usage.statistics.xml
 //        count(/application/component[@name='ActionsCollector']/counts/child::*)
@@ -39,8 +40,11 @@ public class xPathDemo {
 //        name(//*[attribute::when=2006])
 //        name(//surname/ancestor::*[name() = 'author'])
 
+//        count(//*[starts-with(@action, 'Show')])
 
-        System.out.println(xpath.evaluate("count(//*[starts-with(@action, 'Show')])", document));
+
+
+        System.out.println(xpath.evaluate("", document));
 
 
 //        System.out.println(xpath.evaluate("", document, XPathConstants.NODESET));
