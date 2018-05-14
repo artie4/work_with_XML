@@ -17,8 +17,8 @@ public class XPathDemo {
 
     public static void main(String[] args) {
 
-        xmlFileName = "E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\books.xml";
-        xPathExpression = "count(//book[@id='bk101']/price/ancestor::*)";
+        xmlFileName = "";
+        xPathExpression = "";
         xPathQuery(xmlFileName, xPathExpression);
 
 //        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\books.xml
