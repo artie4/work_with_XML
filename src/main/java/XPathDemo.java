@@ -1,4 +1,6 @@
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -8,16 +10,16 @@ import javax.xml.xpath.*;
 import java.io.File;
 import java.io.IOException;
 
-public class xPathDemo {
+public class XPathDemo {
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
+    private static String xmlFileName;
+    private static String xPathExpression;
 
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File("E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\books.xml"));
+    public static void main(String[] args) {
 
-        XPathFactory xpf = XPathFactory.newInstance();
-        XPath xpath = xpf.newXPath();
+        xmlFileName = "E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\books.xml";
+        xPathExpression = "count(//book[@id='bk101']/price/ancestor::*)";
+        xPathQuery(xmlFileName, xPathExpression);
 
 //        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\books.xml
 //        /catalog/book
@@ -39,17 +41,33 @@ public class xPathDemo {
 //        //surname/ancestor::biblStruct/@type
 //        name(//*[attribute::when=2006])
 //        name(//surname/ancestor::*[name() = 'author'])
-
 //        count(//*[starts-with(@action, 'Show')])
 
+    }
 
+    static void xPathQuery(String fileName, String query) {
 
-        System.out.println(xpath.evaluate("", document));
-
-
-//        System.out.println(xpath.evaluate("", document, XPathConstants.NODESET));
-//        System.out.println(xpath.evaluate("", document, XPathConstants.NODE));
-//        System.out.println(((Number) xpath.evaluate("", document, XPathConstants.NUMBER)).intValue());
-
+        XPathFactory xpf = XPathFactory.newInstance();
+        XPath xpath = xpf.newXPath();
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.parse(new File(fileName));
+            try {
+                NodeList nodeList = (NodeList) xpath.evaluate(query, document, XPathConstants.NODESET);
+                for (int i = 0; i < nodeList.getLength(); i++) {
+                    System.out.println(nodeList.item(i).getTextContent());
+                }
+            }
+            catch (XPathExpressionException xpee) {
+                String output = xpath.evaluate(query, document);
+                System.out.println(output);
+            }
+        }
+        catch (ParserConfigurationException pce) { pce.getStackTrace();}
+        catch (IOException ioe) { ioe.getStackTrace();}
+        catch (SAXException saxe) { saxe.getStackTrace();}
+        catch (XPathExpressionException xpathee) { xpathee.getStackTrace();}
     }
 }
+
