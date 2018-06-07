@@ -17,8 +17,9 @@ public class XPathDemo {
 
     public static void main(String[] args) {
 
-        xmlFileName = "";
-        xPathExpression = "";
+        xmlFileName = "E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\example1.xml";
+//        xPathExpression = "//*[contains(name(), 'singer')]";
+        xPathExpression = "./div/head/lg/l[1]";
         xPathQuery(xmlFileName, xPathExpression);
 
 //        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\books.xml
@@ -33,15 +34,16 @@ public class XPathDemo {
 //        generate-id(//book)
 //        //book[last()]/author/following-sibling::*[name() = 'genre']
 
-//        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\ usage.statistics.xml
 //        count(/application/component[@name='ActionsCollector']/counts/child::*)
 //        //component[@name='ActionsCollector']/counts/entry[1]/@action
 
-//        E:\Projects\JavaServerWebApp\parseXML\exampleParseXML\src\main\resources\biblStruct.xml
 //        //surname/ancestor::biblStruct/@type
 //        name(//*[attribute::when=2006])
 //        name(//surname/ancestor::*[name() = 'author'])
 //        count(//*[starts-with(@action, 'Show')])
+
+//        "E:\\Projects\\JavaServerWebApp\\parseXML\\exampleParseXML\\src\\main\\resources\\AWSECommerceService.wsdl.xml"
+
 
     }
 
